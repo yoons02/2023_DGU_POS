@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<div style="margin-top: 3rem;">
+    <div class="row row-cols-2 row-cols-md-3 g-4">
+        {% for table in tables %}
+            <div class="col">
+                <div type="button" class="card h-100" data-bs-toggle="modal" data-bs-target="#table-{{table.id}}">
+                    <div class="card-body">
+                        <h5 class="card-title"># {{table.id}}</h5>
+                        <p class="card-text">{{table.total}} 원</p>
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<form action="{% url 'createtable' %}" method="post">
+    {%csrf_token%}
+<div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    <button type="submit" id="addTable" class="btn btn-primary bg-warning border border-warning text-black" data-bs-toggle="modal" data-bs-target="#tableadd">
+        테이블 추가
+    </button>
+</div>
+</form>
+
+{% for table in tables %}
+    <div class="modal fade" id="table-{{table.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{table.id}}번 테이블 : {{table.total}}원</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{% url 'update' table.id %}" method="post">
+                    {%csrf_token%}
+                    <div class="modal-body">
+                        <!-- <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.0.name}} : {{menus.0.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="person" value="{{table.person}}">
+                            </div>
+                        </div> -->
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.0.name}} : {{menus.0.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu1" value="{{table.menu1}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.1.name}} : {{menus.1.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu2" value="{{table.menu2}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.2.name}} : {{menus.2.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu3" value="{{table.menu3}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.3.name}} : {{menus.3.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu4" value="{{table.menu4}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.4.name}} : {{menus.4.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu5" value="{{table.menu5}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.5.name}} : {{menus.5.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu6" value="{{table.menu6}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.6.name}} : {{menus.6.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu7" value="{{table.menu7}}">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">{{menus.7.name}} : {{menus.7.price}}원</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="menu8" value="{{table.menu8}}">
+                            </div>
+                        </div>
+                        <!-- <div class="mb-2 row">
+                            <div class="col">
+                                <label for="exampleFormControlInput1" class="col-form-label">특이사항</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="special_note" class="form-control" value="{{table.special_note}}">
+                            </div>
+                        </div> -->
+                        <hr>
+                        <div >
+                            <label>특이사항</label><br>
+                            {%if table.special_note != None%}
+                            <input class="form-control" id="special_note" type="text" name="special_note" value="{{table.special_note}}">
+                            {%else%}
+                            <input class="form-control" id="special_note" type="text" name="special_note" value=" ">
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-danger" href="{% url 'endtable' table.id %}">음식 나감</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <!-- <button type="submit" class="btn btn-primary">저장하기</button> -->
+                        <button type="submit" class="btn btn-primary" href="{% url 'update' table.id %}">저장하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{%endfor%}
+{% else %}
+<div class="fist">
+    <img id="first" src="https://i.ibb.co/GTM7mCc/IMG-8941.png">
+</div>
+<p id="loginment">매출 3,000,000원을 달성하지 못하면<br>로그아웃 하지 못합니다.<br>
+    그래도 <a href="{% url 'base:login' %}">로그인</a>하시겠습니까?<br>
+</p>
+{% endif %}
+{% endblock %}
