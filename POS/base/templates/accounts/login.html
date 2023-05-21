@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="loginform">
+    <img id="first" src="https://i.ibb.co/GTM7mCc/IMG-8941.png">
+
+    <form action="{% url 'base:login' %}" method="POST">
+        {% csrf_token %}
+        <div id="user_id">
+            <input id="inputID" type="text" name="username" placeholder="ID"><br>
+        </div>
+        <div id="user_pw">
+            <input id="inputPW" type="password" name="password" placeholder="Password"><br>  
+        </div>
+
+        <div id="loginbutton">
+            <input id="inputlogin" type="submit" value="로그인">
+        </div>
+    </form>
+</div>
+{% endblock %}

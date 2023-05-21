@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+<form action="{% url 'base:logout' %}" method="POST">
+    {% csrf_token %}
+    <p>로그아웃 하시겠습니까?</p>
+    <input type="submit" value="로그아웃">
+</form>
+
+{% endblock %}
