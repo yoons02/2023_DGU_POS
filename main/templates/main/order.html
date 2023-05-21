@@ -169,6 +169,11 @@
     </div>
 {%endfor%}
 {% else %}
-오늘 하루 달려보이소
+<div class="fist">
+    <img id="first" src="https://i.ibb.co/GTM7mCc/IMG-8941.png">
+</div>
+<p id="loginment">매출 3,000,000원을 달성하지 못하면<br>로그아웃 하지 못합니다.<br>
+    그래도 <a href="{% url 'base:login' %}">로그인</a>하시겠습니까?<br>
+</p>
 {% endif %}
 {% endblock %}

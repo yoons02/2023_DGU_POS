@@ -9,6 +9,39 @@ body {
     margin-right: 0px;
 }
 
+#loginment{
+    color:white;
+    text-align: center;
+    font-size: 20px;
+}
+
+.first{
+    align-items: center;
+    text-align:center;
+}
+
+#first{
+    align-items: center;
+    display: flex;
+    text-align: center;
+    width:25%;;
+    margin: 0px auto;
+}
+
+@media screen and (max-width: 1200px) {
+    #first{
+        align-items: center;
+        display: flex;
+        text-align: center;
+        width:60%;
+        margin: 0px auto;
+    }
+}
+
+.loginform{
+    margin-top: 60px;
+}
+
 #addTable{
     display: grid;
     width: 100%;
@@ -81,13 +114,13 @@ body {
 #user_id{
     color: white;
     text-align: center;
-    margin : 20px 0px;
+    margin : 10px 0px 0x 0px;
 }
 
 #user_pw{
     color: white;
     text-align: center;
-    margin : 20px 0px;
+    margin : 10px 0px 20px 0px;
 
 }
 
@@ -96,6 +129,7 @@ body {
     border-radius: 5px;
     border : none;
     padding: 5px 10px;
+    font-size: 15px;
 }
 
 #inputPW{
@@ -103,6 +137,7 @@ body {
     border-radius: 5px;
     border : none;
     padding: 5px 10px;
+    font-size: 15px;
 }
 
 #inputlogin{
@@ -110,7 +145,7 @@ body {
     border-radius: 5px;
     border : none;
     padding: 5px 10px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -119,6 +154,7 @@ body {
         border-radius: 5px;
         border : none;
         padding: 5px 10px;
+        font-size: 20px;
     }
     
     #inputPW{
@@ -126,6 +162,7 @@ body {
         border-radius: 5px;
         border : none;
         padding: 5px 10px;
+        font-size: 20px;
     }
 
     #inputlogin {
@@ -133,5 +170,6 @@ body {
         border-radius: 5px;
         border : none;
         padding: 5px 10px;
+        font-size: 20px;
     }
 }

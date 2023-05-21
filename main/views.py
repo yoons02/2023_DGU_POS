@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib import auth
 
 # Create your views here.
 def showOrder(request) :
-    tables = Table.objects.all()
-    menus = Menu.objects.all()
-    return render(request, 'main/order.html', {'tables': tables, 'menus':menus})
+    
+    if request.user.is_authenticated:
+        tables = Table.objects.all()
+        menus = Menu.objects.all()
+        return render(request, 'main/order.html', {'tables': tables, 'menus':menus})
+    else:
+        return redirect('base:login')
 
 def create(request):
     new_table = Table()
