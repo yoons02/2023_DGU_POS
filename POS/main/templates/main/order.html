@@ -24,7 +24,7 @@
 <form action="{% url 'createtable' %}" method="post">
     {%csrf_token%}
 <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-    <button type="submit" id="addTable" class="btn btn-primary bg-warning border border-warning text-black" data-bs-toggle="modal" data-bs-target="#tableadd">
+    <button type="submit" id="addTable" class="btn btn-outline-warning active" data-bs-toggle="modal" data-bs-target="#tableadd">
         테이블 추가
     </button>
 </div>

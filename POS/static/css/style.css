@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(#CC4900 10%, #000000 70%) fixed;
+    /* background: linear-gradient(#CC4900 -20%, #000000 60%) fixed; */
+    background: linear-gradient(#CC4900 10%, #fff 70%) fixed; 
     width: 100%;
 }
 
@@ -127,7 +128,7 @@ body {
 #inputID{
     width : 70%;
     border-radius: 5px;
-    border : none;
+    border : 1px solid gray;
     padding: 5px 10px;
     font-size: 15px;
 }
@@ -135,7 +136,7 @@ body {
 #inputPW{
     width : 70%;
     border-radius: 5px;
-    border : none;
+    border : 1px solid gray;
     padding: 5px 10px;
     font-size: 15px;
 }
@@ -152,7 +153,7 @@ body {
     #inputID{
         width : 40%;
         border-radius: 5px;
-        border : none;
+        border : 1px solid gray;
         padding: 5px 10px;
         font-size: 20px;
     }
@@ -160,7 +161,7 @@ body {
     #inputPW{
         width : 40%;
         border-radius: 5px;
-        border : none;
+        border : 1px solid gray;
         padding: 5px 10px;
         font-size: 20px;
     }
